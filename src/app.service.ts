@@ -12,11 +12,7 @@ export class AppService {
     private readonly connection: Connection,
   ) {}
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
-  async sendMessage(topic, data, key?) {
+  async sendMessage(topic:string, data:any, key?:string) {
     return this.kafkaProducer.send({
       topic,
       messages: [
@@ -28,7 +24,7 @@ export class AppService {
     });
   }
 
-  async consultarConParams(query, params, context, message) {
+  async searchWithParams(query:string, params:any, context:any, message:any) {
     console.log('QUERY = ' + query + ', PARAMS = ' + params);
     this.connection.query(query, params).then((value) => {
       console.log(value.length);
@@ -48,7 +44,7 @@ export class AppService {
     });
   }
 
-  async crearDato(query, params, context, message) {
+  async createData(query:string, params:any, context:any, message:any) {
     console.log('QUERY = ' + query + ', PARAMS = ' + params);
     const response = {};
     try {
